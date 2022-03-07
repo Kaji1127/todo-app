@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+*.sketch
+*.fig
+*.xd
+
 # testing
 /coverage
 
