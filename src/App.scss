@@ -1,0 +1,43 @@
+.main {
+	position: absolute;
+	top: 5rem;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 32.7rem;
+	display: flex;
+	flex-direction: column;
+	row-gap: 4rem;
+}
+
+.header {
+	background-color: orange;
+	display: flex;
+	justify-content: space-between;
+}
+
+.todos {
+	height: 500px;
+	background-color: lightBlue;
+	display: flex;
+	flex-direction: column;
+	row-gap: 1.6rem;
+
+	&__create {
+		height: 50px;
+		background-color: yellow;
+	}
+	&__list {
+		height: 400px;
+		background-color: orangered;
+	}
+	&__filter {
+		height: 50px;
+		background-color: lime;
+	}
+}
+
+.drag-drop {
+	display: block;
+	height: 100px;
+	background-color: purple;
+}
