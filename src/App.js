@@ -17,7 +17,7 @@ const App = () => {
 						<img
 							className="background__image"
 							src={mobileLightBackground}
-							alt=""
+							alt="background"
 						/>
 					</picture>
 				</div>
