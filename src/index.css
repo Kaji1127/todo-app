@@ -34,6 +34,10 @@ html {
 	font-size: 62.5%;
 }
 
+body {
+	font-family: 'Josefin Sans', sans-serif;
+}
+
 img,
 picture,
 video,
