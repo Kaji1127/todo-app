@@ -25,6 +25,8 @@ const Todos = ({
 				onCompleteTodo={onCompleteTodo}
 				onClearCompleteTodo={onClearCompleteTodo}
 			/>
+
+			<span className="drag-drop">Drag and drop to reporder list</span>
 		</div>
 	);
 };
