@@ -1,16 +1,30 @@
 import React from 'react';
 import TodoInput from './TodoInput/TodoInput';
 import TodoList from './TodoList/TodoList';
-import TodoFilter from './TodoFilter/TodoFilter';
 import './Todos.scss';
 
-const Todos = () => {
+const Todos = ({
+	todos,
+	todoText,
+	onGetTodoText,
+	onAddTodo,
+	onDeleteTodo,
+	onCompleteTodo,
+	onClearCompleteTodo,
+}) => {
 	return (
 		<div className="todos">
-			<h1 className="heading">Hello World!!</h1>
-			<TodoInput />
-			<TodoList />
-			<TodoFilter />
+			<TodoInput
+				todoText={todoText}
+				onGetTodoText={onGetTodoText}
+				onAddTodo={onAddTodo}
+			/>
+			<TodoList
+				todos={todos}
+				onDeleteTodo={onDeleteTodo}
+				onCompleteTodo={onCompleteTodo}
+				onClearCompleteTodo={onClearCompleteTodo}
+			/>
 		</div>
 	);
 };
