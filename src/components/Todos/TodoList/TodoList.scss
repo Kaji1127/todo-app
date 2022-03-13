@@ -1,0 +1,24 @@
+.todo-list {
+	&__info {
+		padding: 1.6rem 2rem 2rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: relative;
+
+		& p {
+			color: var(--color-light-lightGray);
+		}
+	}
+	&__button {
+		background: transparent;
+		border: none;
+		color: var(--color-light-lightGray);
+		cursor: pointer;
+		transition: color 0.2s;
+
+		&:hover {
+			color: var(--color-light-darkGray);
+		}
+	}
+}

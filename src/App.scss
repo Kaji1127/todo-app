@@ -9,8 +9,31 @@
 	row-gap: 4rem;
 }
 
+label {
+	width: 2rem;
+	height: 2rem;
+	display: block;
+	border-radius: 50%;
+	border: 1px solid var(--bd-light-color);
+	position: relative;
+	cursor: pointer;
+	margin-right: 1.2rem;
+	transition: all 0.2s ease-in-out;
+
+	&:hover {
+		border: 1px solid transparent;
+		background: linear-gradient(var(--color-white), var(--color-white))
+				padding-box,
+			linear-gradient(to right bottom, var(--check-blue), var(--check-purple))
+				border-box;
+	}
+}
+
 .drag-drop {
 	display: block;
-	height: 100px;
-	background-color: purple;
+	margin-top: 4rem;
+	// margin-bottom: 7.2rem;
+	text-align: center;
+	color: var(--color-light-lightGray);
+	font-size: 1.4rem;
 }
