@@ -23,6 +23,7 @@ const TodoItem = ({ todoItem, id, task, onDeleteTodo, onCompleteTodo }) => {
 					onClick={() => onDeleteTodo(id)}
 					src={deleteIcon}
 					alt="Delete Icon"
+					className="todo-item__delete desktop"
 				/>
 			</li>
 		</>
