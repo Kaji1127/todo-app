@@ -1,6 +1,10 @@
 .background {
 	height: 20rem;
 
+	@media (min-width: 48em) {
+		height: 30rem;
+	}
+
 	&__content {
 		height: 100%;
 	}

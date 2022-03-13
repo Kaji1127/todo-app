@@ -10,11 +10,25 @@
 		letter-spacing: 12px;
 		text-transform: uppercase;
 		color: var(--color-white);
+
+		@media (min-width: 48em) {
+			font-size: 4rem;
+		}
 	}
 
 	&__img {
 		cursor: pointer;
 		width: 2rem;
 		height: 2rem;
+		transition: all 1s;
+
+		&:hover {
+			transform: rotate(360deg);
+		}
+
+		@media (min-width: 48em) {
+			width: 2.5rem;
+			height: 2.5rem;
+		}
 	}
 }

@@ -1,4 +1,4 @@
-.main {
+.todo {
 	position: absolute;
 	top: 5rem;
 	left: 50%;
@@ -7,6 +7,11 @@
 	display: flex;
 	flex-direction: column;
 	row-gap: 4rem;
+
+	@media (min-width: 48em) {
+		top: 7rem;
+		width: 54rem;
+	}
 }
 
 label {
@@ -14,26 +19,21 @@ label {
 	height: 2rem;
 	display: block;
 	border-radius: 50%;
-	border: 1px solid var(--bd-light-color);
+	border: 1px solid var(--bd-color);
 	position: relative;
 	cursor: pointer;
-	margin-right: 1.2rem;
-	transition: all 0.2s ease-in-out;
+	// margin-right: 1.2rem;
+	transition: all 0.2s;
+
+	@media (min-width: 48em) {
+		width: 2.4rem;
+		height: 2.4rem;
+	}
 
 	&:hover {
 		border: 1px solid transparent;
-		background: linear-gradient(var(--color-white), var(--color-white))
-				padding-box,
+		background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
 			linear-gradient(to right bottom, var(--check-blue), var(--check-purple))
 				border-box;
 	}
-}
-
-.drag-drop {
-	display: block;
-	margin-top: 4rem;
-	// margin-bottom: 7.2rem;
-	text-align: center;
-	color: var(--color-light-lightGray);
-	font-size: 1.4rem;
 }

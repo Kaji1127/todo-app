@@ -1,6 +1,11 @@
 .card {
-	background-color: var(--color-white);
+	background-color: var(--bg-color);
 	border-radius: 5px;
 	margin-bottom: 1.6rem;
-	box-shadow: var(--shadow-light-pale);
+	box-shadow: var(--shadow);
+	transition: all 0.2s;
+
+	@media (min-width: 48em) {
+		margin-bottom: 2.4rem;
+	}
 }

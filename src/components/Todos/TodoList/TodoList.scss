@@ -7,18 +7,26 @@
 		position: relative;
 
 		& p {
-			color: var(--color-light-lightGray);
+			color: var(--color-filter);
+
+			@media (min-width: 48em) {
+				font-size: 1.4rem;
+			}
 		}
 	}
 	&__button {
 		background: transparent;
 		border: none;
-		color: var(--color-light-lightGray);
+		color: var(--color-filter);
 		cursor: pointer;
 		transition: color 0.2s;
 
+		@media (min-width: 48em) {
+			font-size: 1.4rem;
+		}
+
 		&:hover {
-			color: var(--color-light-darkGray);
+			color: var(--hover-color);
 		}
 	}
 }
