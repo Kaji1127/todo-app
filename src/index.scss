@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+:root {
+	--primary-color: hsl(220, 98%, 61%);
+	--check-blue: hsl(192, 100%, 67%);
+	--check-purple: hsl(280, 87%, 65%);
+	--color-white: hsl(0, 0%, 100%);
+
+	/* light-theme-color */
+	--color-light-lightGray: hsl(236, 9%, 61%);
+	--color-light-completed: hsl(233, 11%, 84%);
+	--color-light-darkGray: hsl(235, 19%, 35%);
+	--bd-light-color: hsl(236, 33%, 92%);
+	--bg-light-color: hsl(0, 0%, 98%);
+	--shadow-light-pale: 0 35px 50px -15px hsla(235, 19%, 80%, 0.5);
+	--shadow-light-dark: 0 35px 50px hsla(235, 19%, 80%, 0.5);
+
+	/* dark-theme-color */
+	--color-dark-gary: hsl(234, 11%, 52%);
+	--color-dark-completed: hsl(233, 14%, 35%);
+	--color-dark-lightGray: hsl(234, 39%, 85%);
+	--color-dark-darkGray: hsl(235, 16%, 43%);
+	--bd-dark-gray: hsl(235, 14%, 26%);
+	--bg-dark-darkBlue: hsl(235, 21%, 11%);
+	--bg-dark-grayshBlue: hsl(235, 24%, 19%);
+
+	&.light-theme {
+		--bg-body: hsl(0, 0%, 100%);
+		--bg-color: hsl(0, 0%, 98%);
+		--bd-color: hsl(236, 32%, 92%);
+		--color: hsl(235, 19%, 35%);
+		--color-completed: hsl(233, 11%, 84%);
+		--shadow: 0 35px 50px -15px hsla(235, 19%, 80%, 0.5);
+		--shadow-dark: 0 35px 50px hsla(235, 19%, 80%, 0.5);
+		--color-filter: hsl(236, 9%, 61%);
+		--hover-color: hsl(235, 19%, 35%);
+	}
+	&.dark-theme {
+		--bg-body: hsl(235, 21%, 11%);
+		--bg-color: hsl(235, 24%, 19%);
+		--bd-color: hsl(235, 14%, 26%);
+		--color: hsl(234, 39%, 85%);
+		--color-completed: hsl(233, 14%, 35%);
+		--shadow: none;
+		--shadow-dark: none;
+		--color-filter: hsl(235, 16%, 42%);
+		--hover-color: hsl(236, 32%, 92%);
+	}
+}
+
+#root {
+	transition: all 0.2s;
+}
+
+// .light- {
+
+// }
+
+// .dark-theme {
+
+// }
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd,
+ul,
+button {
+	margin: 0;
+	padding: 0;
+}
+
+ul[role='list'],
+ol[role='list'] {
+	list-style: none;
+}
+
+html:focus-within {
+	scroll-behavior: smooth;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	min-height: 100vh;
+	text-rendering: optimizeSpeed;
+	line-height: 1.5;
+	font-size: 1.2rem;
+	font-family: 'Josefin Sans', sans-serif;
+	background-color: var(--bg-body);
+
+	@media (min-width: 48em) {
+		font-size: 1.8rem;
+	}
+}
+
+a:not([class]) {
+	text-decoration-skip-ink: auto;
+}
+
+img,
+picture {
+	max-width: 100%;
+	display: block;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html:focus-within {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
