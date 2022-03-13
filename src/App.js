@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { v1 as uuid } from 'uuid';
 import Background from './components/Background/Background';
 import Header from './components/Header/Header';
@@ -6,9 +6,31 @@ import Todos from './components/Todos/Todos';
 import { initialTodos } from './initialTodos';
 import './App.scss';
 
+const getTheme = () => {
+	let theme = 'light-theme';
+	if (localStorage.getItem('theme')) {
+		theme = localStorage.getItem('theme');
+	}
+	return theme;
+};
+
 const App = () => {
 	const [todos, setTodos] = useState(initialTodos);
 	const [todoText, setTodoText] = useState('');
+	const [theme, setTheme] = useState(getTheme());
+
+	const toggleThemeHandler = () => {
+		if (theme === 'light-theme') {
+			setTheme('dark-theme');
+		} else {
+			setTheme('light-theme');
+		}
+	};
+
+	useEffect(() => {
+		document.documentElement.className = theme;
+		localStorage.setItem('theme', theme);
+	}, [theme]);
 
 	const getTodoTextHandler = (e) => {
 		setTodoText(e.target.value);
@@ -47,10 +69,10 @@ const App = () => {
 	};
 
 	return (
-		<>
-			<Background />
-			<main className="main">
-				<Header />
+		<main className="main">
+			<Background theme={theme} />
+			<div className="todo">
+				<Header theme={theme} onToggleTheme={toggleThemeHandler} />
 				<Todos
 					todos={todos}
 					todoText={todoText}
@@ -60,9 +82,8 @@ const App = () => {
 					onCompleteTodo={completeTodoHandler}
 					onClearCompleteTodo={clearCompleteTodoHandler}
 				/>
-				<span className="drag-drop">Drag and drop to reporder list</span>
-			</main>
-		</>
+			</div>
+		</main>
 	);
 };
 
