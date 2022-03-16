@@ -14,8 +14,18 @@ const getTheme = () => {
 	return theme;
 };
 
+const getTodos = () => {
+	let todoItems = initialTodos;
+	if (localStorage.getItem('todos')) {
+		todoItems = JSON.parse(localStorage.getItem('todos'));
+	}
+	return todoItems;
+};
+// localStorage.setItem('todos', JSON.stringify(todoItems));
+// console.log(JSON.parse(localStorage.getItem('todos')));
+
 const App = () => {
-	const [todos, setTodos] = useState(initialTodos);
+	const [todos, setTodos] = useState(getTodos());
 	const [todoText, setTodoText] = useState('');
 	const [theme, setTheme] = useState(getTheme());
 
@@ -32,6 +42,10 @@ const App = () => {
 		localStorage.setItem('theme', theme);
 	}, [theme]);
 
+	useEffect(() => {
+		localStorage.setItem('todos', JSON.stringify(todos));
+	}, [todos]);
+
 	const getTodoTextHandler = (e) => {
 		setTodoText(e.target.value);
 	};
@@ -41,7 +55,10 @@ const App = () => {
 
 		if (e.key === 'Enter') {
 			setTodos((prevTodo) => {
-				return [...prevTodo, { id: uuid(), isComplete: false, task: todoText }];
+				return [
+					...prevTodo,
+					{ id: uuid().toString(), isComplete: false, task: todoText },
+				];
 			});
 			setTodoText('');
 		}
@@ -73,6 +90,7 @@ const App = () => {
 			<Background theme={theme} />
 			<div className="todo">
 				<Header theme={theme} onToggleTheme={toggleThemeHandler} />
+
 				<Todos
 					todos={todos}
 					todoText={todoText}
