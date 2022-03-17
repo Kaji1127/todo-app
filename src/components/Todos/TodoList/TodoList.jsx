@@ -23,15 +23,25 @@ const TodoList = ({
 		return false;
 	});
 
-	const handleOnDragEnd = (result) => {
-		console.log(result);
+	const reorder = (list, startIndex, endIndex) => {
+		const removed = list.splice(startIndex, 1);
+		console.log(removed);
+		list.splice(endIndex, 0, removed[0]);
+	};
+
+	const onDragEnd = (result) => {
+		// console.log(result);
+		if (!result.destination) {
+			return;
+		}
+		reorder(filterTodos, result.source.index, result.destination.index);
 	};
 
 	return (
 		<Card>
-			<DragDropContext onDragEnd={handleOnDragEnd}>
+			<DragDropContext onDragEnd={onDragEnd}>
 				<Droppable droppableId="droppable">
-					{(provided) => (
+					{(provided, snapshot) => (
 						<ul
 							ref={provided.innerRef}
 							className="todo-list"
@@ -39,21 +49,32 @@ const TodoList = ({
 						>
 							{filterTodos.map((todo, index) => {
 								return (
-									<Draggable key={todo.id} draggableId={todo.id} index={index}>
-										{(provided) => (
-											<div
-												ref={provided.innerRef}
-												{...provided.draggableProps}
-												{...provided.dragHandleProps}
-											>
-												<TodoItem
-													task={todo.task}
-													id={todo.id}
-													todo={todo}
-													onDeleteTodo={onDeleteTodo}
-													onCompleteTodo={onCompleteTodo}
-												/>
-											</div>
+									<Draggable
+										style={(_isDragging, draggableStyle) => ({
+											...draggableStyle,
+											position: 'static',
+										})}
+										key={todo.id}
+										draggableId={todo.id}
+										index={index}
+									>
+										{(provided, snapshot) => (
+											<>
+												<div
+													className="drag-item"
+													ref={provided.innerRef}
+													{...provided.draggableProps}
+													{...provided.dragHandleProps}
+												>
+													<TodoItem
+														task={todo.task}
+														id={todo.id}
+														todo={todo}
+														onDeleteTodo={onDeleteTodo}
+														onCompleteTodo={onCompleteTodo}
+													/>
+												</div>
+											</>
 										)}
 									</Draggable>
 								);
