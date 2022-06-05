@@ -14,7 +14,7 @@ const Todo = () => {
 		setFilter(filter);
 	};
 
-	const filteringTodos = todos.filter((todo) => {
+	const filteringTodos = todos?.filter((todo) => {
 		if (filter === 'All') return true;
 		if (filter === 'Active' && !todo.isCompleted) return true;
 		if (filter === 'Completed' && todo.isCompleted) return true;
