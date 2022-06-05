@@ -1,0 +1,39 @@
+.title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	h1 {
+		font-size: var(--heading-sp);
+		font-weight: 700;
+		color: var(--white);
+		text-transform: uppercase;
+		letter-spacing: 1rem;
+		transform: translateY(2px);
+
+		@media screen and (min-width: 48em) {
+			font-size: var(--heading-pc);
+		}
+	}
+
+	img {
+		width: 2rem;
+		height: 2rem;
+		cursor: pointer;
+
+		@media screen and (min-width: 48em) {
+			width: 2.6rem;
+			height: 2.6rem;
+		}
+
+		// &.sun-icon {
+		// 	transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1) 0s;
+		// 	transform: rotate(0deg);
+		// }
+
+		// &.moon-icon {
+		// 	transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1) 0s;
+		// 	transform: rotate(360deg);
+		// }
+	}
+}

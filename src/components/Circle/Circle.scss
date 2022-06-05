@@ -1,0 +1,45 @@
+label {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	border: 1px solid var(--border-color);
+	display: block;
+	cursor: pointer;
+
+	&:hover {
+		background: linear-gradient(var(--bg-todo), var(--bg-todo)) padding-box,
+			linear-gradient(to right bottom, var(--check-blue), var(--check-purple))
+				border-box;
+		border: 1px solid transparent;
+	}
+
+	&.checked {
+		background-image: linear-gradient(
+			to right bottom,
+			var(--check-blue),
+			var(--check-purple)
+		);
+		position: relative;
+
+		&::after {
+			position: absolute;
+			content: url('../../../public/icon-check.svg');
+			width: 0.725rem;
+			height: 0.5rem;
+			top: 4px;
+			left: 4px;
+
+			@media screen and (min-width: 48em) {
+				width: 0.87rem;
+				height: 0.6rem;
+				top: 7px;
+				left: 5.4px;
+			}
+		}
+	}
+
+	@media screen and (min-width: 48em) {
+		width: 2.4rem;
+		height: 2.4rem;
+	}
+}

@@ -1,0 +1,14 @@
+.todo-list {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	background-color: var(--bg-todo);
+
+	&__empty {
+		padding: 1.6rem 2rem;
+		color: var(--todo-color);
+		border-bottom: 1px solid var(--border-color);
+		font-size: var(--text-lg);
+		font-weight: 700;
+		text-align: center;
+	}
+}

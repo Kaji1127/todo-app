@@ -1,0 +1,49 @@
+.todo-item {
+	display: grid;
+	grid-template-columns: 1px 2rem 1fr 1.2rem;
+	align-items: center;
+	border-bottom: 1px solid var(--border-color);
+	padding: 1.6rem 2rem;
+	color: var(--todo-color);
+
+	@media screen and (min-width: 48em) {
+		grid-template-columns: 1px 2.4rem 1fr 1.8rem;
+		padding: 2rem 2.4rem;
+	}
+
+	&__task {
+		margin-left: 1.2rem;
+		margin-right: 1.6rem;
+		font-size: var(--text-small);
+		word-break: break-all;
+		line-height: 1;
+
+		@media screen and (min-width: 48em) {
+			font-size: var(--text-lg);
+			margin-left: 2.4rem;
+		}
+
+		&.complete {
+			text-decoration: line-through;
+			text-decoration-color: var(--complete-color);
+			color: var(--complete-color);
+		}
+	}
+
+	&__clear {
+		width: 1.2rem;
+		height: 1.2rem;
+		cursor: pointer;
+
+		@media screen and (min-width: 48em) {
+			width: 1.8rem;
+			height: 1.8rem;
+		}
+	}
+
+	input {
+		width: 0;
+		height: 0;
+		visibility: hidden;
+	}
+}

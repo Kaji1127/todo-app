@@ -1,0 +1,49 @@
+.todo-input {
+	display: flex;
+	padding: 1.4rem 2rem;
+	margin-bottom: 1.6rem;
+	gap: 1.2rem;
+	background-color: var(--bg-todo);
+	border-radius: 5px;
+	align-items: center;
+
+	@media screen and (min-width: 48em) {
+		padding: 2rem 2.4rem;
+		gap: 2.4rem;
+		margin-bottom: 2.4rem;
+	}
+
+	& div {
+		width: 2rem;
+		height: 2rem;
+		border-radius: 50%;
+		border: 1px solid var(--border-color);
+		display: block;
+
+		@media screen and (min-width: 48em) {
+			width: 2.4rem;
+			height: 2.4rem;
+		}
+	}
+
+	input {
+		background-color: transparent;
+		outline: none;
+		border: none;
+		caret-color: var(--blue);
+		font-size: var(--text-small);
+		color: var(--todo-color);
+		flex: 1;
+
+		@media screen and (min-width: 48em) {
+			font-size: var(--text-lg);
+		}
+	}
+}
+::placeholder {
+	font-size: var(--text-small);
+
+	@media screen and (min-width: 48em) {
+		font-size: var(--text-lg);
+	}
+}

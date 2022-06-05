@@ -1,36 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import BgDark from '../../assets/bg-mobile-dark.jpg';
+import BgDarkDesktop from '../../assets/bg-desktop-dark.jpg';
+import BgLight from '../../assets/bg-mobile-light.jpg';
+import BgLightDesktop from '../../assets/bg-desktop-light.jpg';
 import './Background.scss';
-import mobileLightBackground from '../../assets/bg-mobile-light.jpg';
-import mobileDarkBackground from '../../assets/bg-mobile-dark.jpg';
-import desktopLightBackground from '../../assets/bg-desktop-light.jpg';
-import desktopDarkBackground from '../../assets/bg-desktop-dark.jpg';
+import ThemeContext from '../../store/ThemeContext';
 
-const Background = ({ theme }) => {
+const Background = () => {
+	const themeCtx = useContext(ThemeContext);
+	const theme = themeCtx.state.theme;
+
 	return (
-		<>
-			<div className="background">
-				<div className="background__content">
-					<picture className="background__image">
-						<source
-							media="(min-width: 36em)"
-							srcSet={`${
-								theme === 'light-theme'
-									? desktopLightBackground
-									: desktopDarkBackground
-							}`}
-						/>
-						<img
-							src={`${
-								theme === 'light-theme'
-									? mobileLightBackground
-									: mobileDarkBackground
-							}`}
-							alt="background"
-						/>
-					</picture>
-				</div>
-			</div>
-		</>
+		<div className="background">
+			<picture>
+				{theme === 'dark-theme' ? (
+					<>
+						<source media="(min-width: 48em)" srcSet={BgDarkDesktop} />
+						<img className="background__bg" src={BgDark} alt="Background" />
+					</>
+				) : (
+					<>
+						<source media="(min-width: 48em)" srcSet={BgLightDesktop} />
+						<img className="background__bg" src={BgLight} alt="Background" />
+					</>
+				)}
+			</picture>
+		</div>
 	);
 };
 
