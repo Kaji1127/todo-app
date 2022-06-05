@@ -4,7 +4,7 @@ export const todoContext = createContext([]);
 
 const TodoProvider = ({ children }) => {
 	const getTodos = () => {
-		let todoItems;
+		let todoItems = [];
 		if (localStorage.getItem('todos')) {
 			todoItems = JSON.parse(localStorage.getItem('todos'));
 		}
