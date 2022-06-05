@@ -27,7 +27,7 @@ const Todo = () => {
 		});
 	};
 
-	const todoItems = filteringTodos.map((item) => {
+	const todoItems = filteringTodos?.map((item) => {
 		return (
 			<TodoItem key={item.id} todo={item} onDeleteTodo={deleteTodoHandler} />
 		);
