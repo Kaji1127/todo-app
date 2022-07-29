@@ -17,10 +17,12 @@
 		font-size: var(--text-small);
 		word-break: break-all;
 		line-height: 1;
+		margin-top: 1px;
 
 		@media screen and (min-width: 48em) {
 			font-size: var(--text-lg);
 			margin-left: 2.4rem;
+			margin-top: 3px;
 		}
 
 		&.complete {
