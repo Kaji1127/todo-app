@@ -12,7 +12,6 @@ const App = () => {
 			<main className="container flex-column">
 				<Title />
 				<Todo />
-				<p>Drag and drop to reorder list</p>
 			</main>
 		</>
 	);
