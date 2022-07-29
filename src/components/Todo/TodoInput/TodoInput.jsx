@@ -9,7 +9,8 @@ const TodoInput = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const id = nanoid();
-		setTodos([...todos, { id: id, task: term, isCompleted: false }]);
+
+		term && setTodos([...todos, { id: id, task: term, isCompleted: false }]);
 		setTerm('');
 	};
 
