@@ -6,16 +6,22 @@ import './TodoInput.scss';
 const TodoInput = () => {
 	const { todos, setTodos } = useContext(todoContext);
 	const [term, setTerm] = useState('');
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const id = nanoid();
 
-		term && setTodos([...todos, { id: id, task: term, isCompleted: false }]);
+		term.trim();
+
+		if (term === '') return;
+
+		setTodos([...todos, { id: id, task: term, isCompleted: false }]);
 		setTerm('');
 	};
 
 	const handleChange = (e) => {
-		setTerm(e.target.value);
+		// 空白のタスクが入らないようにする
+		setTerm(e.target.value.replace(/^\s|^　/, ''));
 	};
 	return (
 		<>
