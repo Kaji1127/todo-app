@@ -1,70 +1,98 @@
-# Getting Started with Create React App
+# Frontend Mentor - Todo app solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [Todo app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### The challenge
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ユーザーができること:
 
-### `npm test`
+- デバイスの画面サイズに応じて、アプリの最適なレイアウトを表示します
+- ページ上のすべてのインタラクティブ要素のホバー状態を確認する
+- 新しい todo をリストに追加する
+- Todo を完了としてマークする
+- リストから todo を削除することができる
+- all/active/complete で Todo リストをフィルタリングできる
+- 完了した Todo をクリアできる
+- ライトテーマとダークテーマを切り替えられる Toggle light and dark mode
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Screenshot
 
-### `npm run build`
+![](./screenshot.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Links
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Solution URL: [リンク](https://github.com/Kaji1127/todo-app)
+- Live Site URL: [リンク](https://react-todolist-appli.netlify.app/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## My process
 
-### `npm run eject`
+### Built with
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- Sass
+- Mobile-first workflow
+- React - JS library
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### What I learned
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+useContext, useReducer を使ってテーマを切り替えするようにした
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+コードスニペット:
 
-## Learn More
+```js
+const ThemeContext = React.createContext();
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+const initialState = {
+	theme:
+		localStorage.getItem('theme') == null
+			? 'dark-theme'
+			: localStorage.getItem('theme'),
+};
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+const themeReducer = (state, action) => {
+	switch (action.type) {
+		case 'LIGHT_THEME':
+			return { theme: 'light-theme' };
 
-### Code Splitting
+		case 'DARK_THEME':
+			return { theme: 'dark-theme' };
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+		default:
+			return state;
+	}
+};
 
-### Analyzing the Bundle Size
+export const ThemeProvider = ({ children }) => {
+	const [state, dispatch] = useReducer(themeReducer, initialState);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+	useEffect(() => {
+		localStorage.setItem('theme', state.theme);
+	}, [state.theme]);
 
-### Making a Progressive Web App
+	return (
+		<ThemeContext.Provider value={{ state, dispatch }}>
+			{children}
+		</ThemeContext.Provider>
+	);
+};
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+export default ThemeContext;
+```
 
-### Advanced Configuration
+### Useful resources
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [リソース 1](https://www.section.io/engineering-education/dark-mode-for-react-app-using-context-api-and-hooks/) - useReducer と useContext を使ったテーマの切り替え方を学んだ。
